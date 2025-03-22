@@ -1,35 +1,104 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import Sidebar from './components/features/sidebar';
+import Navbar from './components/features/navbar';
+import ThemeToggle from './components/features/theme';
+// Import your page components here
+import Dashboard from './pages/dashboard';
+// import Courses from './pages/Courses';
+// import Attendance from './pages/Attendance';
+// import Reports from './pages/Reports';
+// import Notes from './pages/Notes';
+// import Announcements from './pages/Announcements';
+// import Settings from './pages/Settings';
+// import Profile from './pages/Profile';
+import StudentDashboard from './pages/studentDashboard';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentPage, setCurrentPage] = useState('dashboard');
+  const [role, setRole] = useState('teacher'); // or 'student'
+  const [userName, setUserName] = useState('John Doe');
+  const [theme, setTheme] = useState('light');
+
+  // Handler for sidebar menu clicks
+  const handleMenuItemClick = (pageId) => {
+    setCurrentPage(pageId);
+  };
+
+  // Handlers for navbar actions
+  const handleProfileClick = () => {
+    setCurrentPage('profile');
+  };
+
+  const handleSettingsClick = () => {
+    setCurrentPage('settings');
+  };
+
+  const handleLogoutClick = () => {
+    // Handle logout logic here
+    console.log('Logging out...');
+  };
+
+  // Render the appropriate page based on currentPage state
+  const renderPage = () => {
+    if (role === 'teacher') {
+      switch (currentPage) {
+        case 'dashboard':
+          return <Dashboard />;
+        case 'courses':
+          return <Courses />;
+        case 'attendance':
+          return <Attendance />;
+        case 'reports':
+          return <Reports />;
+        case 'notes':
+          return <Notes />;
+        case 'announcements':
+          return <Announcements />;
+        case 'settings':
+          return <Settings />;
+        case 'profile':
+          return <Profile userName={userName} />;
+        default:
+          return <Dashboard />;
+      }
+    } else {
+      // Student role
+      switch (currentPage) {
+        case 'dashboard':
+          return <StudentDashboard />;
+        case 'attendance':
+          return <Attendance />;
+        case 'reports':
+          return <Reports />;
+        case 'settings':
+          return <Settings />;
+        case 'profile':
+          return <Profile userName={userName} />;
+        default:
+          return <StudentDashboard />;
+      }
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div data-theme={theme} className="flex">
+      <Sidebar 
+        role={role} 
+        onMenuItemClick={handleMenuItemClick}
+        activePage={currentPage}
+      />
+      <div className="flex-1 p-4">
+        <Navbar 
+          userName={userName}
+          onProfileClick={handleProfileClick}
+          onSettingsClick={handleSettingsClick}
+          onLogoutClick={handleLogoutClick}
+        />
+        <ThemeToggle theme={theme} setTheme={setTheme} />
+        {renderPage()}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

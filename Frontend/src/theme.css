@@ -1,0 +1,105 @@
+:root {
+  /* Light Theme - Added purple and blue touches */
+  --light-primary: #6d56f3;         /* More purple-blue */
+  --light-primary-hover: #5846cc;
+  --light-secondary: #3a9efd;       /* More blue */
+  --light-secondary-hover: #2788e5;
+  --light-background: #f8f9ff;      /* Slight blue tint */
+  --light-surface: #ffffff;
+  --light-border: #e2e6f5;          /* Bluish border */
+  --light-text-primary: #1a1a2e;    /* Deeper, slightly purple-blue */
+  --light-text-secondary: #4a4b65;  /* Purple-blue tint */
+  --light-text-tertiary: #6b7292;   /* Slightly blue-shifted */
+  --light-error: #ef4444;
+  --light-warning: #f59e0b;
+  --light-success: #10b981;
+  --light-info: #4d7df9;            /* Richer blue */
+  --light-card-shadow: 0 2px 8px rgba(109, 86, 243, 0.08); /* Purple shadow */
+
+  /* Dark Theme - More greyish, less blue */
+  --dark-primary: #7d6fc8;          /* More grey-purple, less blue */
+  --dark-primary-hover: #9086d8;
+  --dark-secondary: #50a396;        /* More teal-grey, less blue */
+  --dark-secondary-hover: #62bdb0;
+  --dark-background: #1a1a23;       /* Darker grey with hint of purple */
+  --dark-surface: #26262f;          /* More grey, less blue */
+  --dark-border: #3a3a45;           /* Neutral grey */
+  --dark-text-primary: #f0f0f5;     /* Very subtle purple-grey tint */
+  --dark-text-secondary: #d8d8e0;
+  --dark-text-tertiary: #b6b6c2;    /* Grey with subtle purple tint */
+  --dark-error: #f87171;
+  --dark-warning: #fbbf24;
+  --dark-success: #34d399;
+  --dark-info: #7191cb;             /* More grey-blue, less vibrant */
+  --dark-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+body.light-mode {
+  --primary: var(--light-primary);
+  --primary-hover: var(--light-primary-hover);
+  --secondary: var(--light-secondary);
+  --secondary-hover: var(--light-secondary-hover);
+  --background: var(--light-background);
+  --surface: var(--light-surface);
+  --border: var(--light-border);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --text-tertiary: var(--light-text-tertiary);
+  --error: var(--light-error);
+  --warning: var(--light-warning);
+  --success: var(--light-success);
+  --info: var(--light-info);
+  --card-shadow: var(--light-card-shadow);
+}
+
+body.dark-mode {
+  --primary: var(--dark-primary);
+  --primary-hover: var(--dark-primary-hover);
+  --secondary: var(--dark-secondary);
+  --secondary-hover: var(--dark-secondary-hover);
+  --background: var(--dark-background);
+  --surface: var(--dark-surface);
+  --border: var(--dark-border);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --text-tertiary: var(--dark-text-tertiary);
+  --error: var(--dark-error);
+  --warning: var(--dark-warning);
+  --success: var(--dark-success);
+  --info: var(--dark-info);
+  --card-shadow: var(--dark-card-shadow);
+}
+
+/* Global styles */
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-hover);
+}

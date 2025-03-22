@@ -47,6 +47,7 @@ const login = async (req, res) => {
 
 // Signup controller
 const signup = async (req, res) => {
+    // console.log(req.body);
     try {
         upload.single('profileImage')(req, res, async (err) => {
             if (err) {

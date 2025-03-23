@@ -71,10 +71,9 @@
 
 /* Stats Overview */
 .stats-overview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
-  margin-bottom: 2rem;
 }
 
 .stat-card {
@@ -131,9 +130,10 @@
 }
 
 /* Enrollment Requests */
-.requests-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+.requests-container,
+.courses-container {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
@@ -229,11 +229,6 @@
 }
 
 /* Courses Overview */
-.courses-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
 
 .course-card {
   background-color: white;

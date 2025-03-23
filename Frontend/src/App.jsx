@@ -2,6 +2,13 @@
 
 import './App.css'
 import './components/auth/Signup'
+import {useState} from 'react'
+import Sidebar from './components/features/sidebar';
+import Navbar from './components/features/navbar';
+import Attendance from './components/features/attendance';
+import ThemeToggle from './components/features/theme';
+import Dashboard from './pages/dashboard';
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');

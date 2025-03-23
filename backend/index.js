@@ -6,8 +6,10 @@ const cors = require('cors');
 
 const app = express();
 const authRoutes = require('./routes/auth');
+const {getFaceEmbedding} = require('./utils/faceRecognition');
 
 const server = http.createServer(app);
+
 
 // Middleware
 app.use(express.json());
@@ -18,10 +20,10 @@ app.use(cors({
     credentials: true,
 }));
 
-app.use((req, res, next) => {
-    console.log("Received Request Body:", req.body);
-    next();
-});
+// app.use((req, res, next) => {
+//     console.log("Received Request Body:", req.body);
+//     next();
+// });
 app.use('/api/auth', authRoutes);
 // Basic route
 app.get('/', (req, res) => {
